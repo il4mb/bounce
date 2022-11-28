@@ -19,4 +19,4 @@ func _ready():
 
 
 func _button_pressed():
-	get_tree().change_scene("res://scene1.tscn")
+	get_tree().change_scene("res://scene/scene1.tscn")
