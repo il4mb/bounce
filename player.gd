@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 350.0
-const WALK_SPEED = 250
+const WALK_SPEED = 400
 const JUMP = 400
 
 const velocity = Vector2()
@@ -25,6 +25,7 @@ func _physics_process(delta):
 		is_runn = true
 		
 	elif Input.is_action_pressed("ui_right"):
+		
 		velocity.x = WALK_SPEED
 		is_runn = true
 	
@@ -38,13 +39,15 @@ func _physics_process(delta):
 		print("nothing")
 	else: 
 		if is_on_floor():
-			velocity.y = (velocity.y/2) - velocity.y # efek memantul
+			velocity.y = (velocity.y/1.5) - velocity.y # efek memantul
 	
 	if is_on_ceiling() :
-		print((velocity.y/200)*velocity.y)
-		velocity.y = (velocity.y/200)*velocity.y
+		velocity.y = -(velocity.y/1.1)
 		
-	print(velocity.y)
+	if is_on_wall():
+		velocity.x = -(velocity.x/1.1)
+			
+		
 	move_and_slide(velocity, Vector2(0, -1))
 
 		
