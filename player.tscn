@@ -17,11 +17,14 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -4.54747e-13 )
 scale = Vector2( 0.2, 0.2 )
 current = true
+zoom = Vector2( 1.5, 1.5 )
 limit_smoothed = true
 smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 3.8147e-06, -7.62939e-06 )
-scale = Vector2( 4.51544, 4.43909 )
+scale = Vector2( 3.81615, 3.82704 )
 shape = SubResource( 1 )
-one_way_collision = true
+
+[connection signal="tree_entered" from="Camera2D" to="." method="_on_Camera2D_tree_entered"]
+[connection signal="tree_entered" from="CollisionShape2D" to="." method="_on_CollisionShape2D_tree_entered"]
